@@ -1,11 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "1HMyOtoRbDjEI5S7cRcYAtmZtkzLgBs5mjsSFN6qkCiGUx/Ox+09j/mJip7zzKOfCLfcPNbdF1OmViCoqPIJsA==",
+  "dgSpecHash": "G+cS7OMwK2EA61/3ZzITSbgyyo3FZ35U/vXaP2ie8y2K/4N6kVMBmye3fH2XRRNbVnWVHnekhdmFJyfYe9/RRQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\ivann\\RiderProjects\\MyCoolLab\\MyCoolLab\\MyCoolLab.csproj",
+  "projectFilePath": "/home/pashs/RiderProjects/MyCoolLab/MyCoolLab/MyCoolLab.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\ivann\\.nuget\\packages\\spectre.console\\0.48.1-preview.0.5\\spectre.console.0.48.1-preview.0.5.nupkg.sha512",
-    "C:\\Users\\ivann\\.nuget\\packages\\system.memory\\4.5.5\\system.memory.4.5.5.nupkg.sha512"
+    "/home/pashs/.nuget/packages/spectre.console/0.48.1-preview.0.5/spectre.console.0.48.1-preview.0.5.nupkg.sha512",
+    "/home/pashs/.nuget/packages/system.memory/4.5.5/system.memory.4.5.5.nupkg.sha512"
   ],
   "logs": []
 }
