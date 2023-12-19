@@ -32,8 +32,10 @@ public class AccountService : IAccountService
         await _historyService.MakeHistory(accountId, amount);
     }
 
-    public Task CreateAccount(string number, string pin)
+    public async Task CreateAccount(string number, string pin)
     {
-        throw new NotImplementedException();
+        Account? account = await _accountRepository.GetAccountByNumber(number);
+        if (account != null) throw new AlreadyExistsException();
+        await _accountRepository.CreateAccount(number, pin);
     }
 }
