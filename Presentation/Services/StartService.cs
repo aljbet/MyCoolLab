@@ -1,12 +1,22 @@
-﻿using Spectre.Console;
+﻿using Application.Services;
+using Spectre.Console;
 
 namespace Presentation.Services;
 
 public class StartService
 {
+    private readonly IAdminService _adminService;
+    private readonly IAccountService _accountService;
+
+    public StartService(IAdminService adminService, IAccountService accountService)
+    {
+        _adminService = adminService ?? throw new ArgumentNullException(nameof(adminService));
+        _accountService = accountService ?? throw new ArgumentNullException(nameof(accountService));
+    }
+
     public void Start()
     {
-        string role = AnsiConsole.Prompt(
+        var role = AnsiConsole.Prompt(
             new SelectionPrompt<string>()
                 .Title("Choose role:")
                 .AddChoices(new List<string>()
@@ -14,6 +24,19 @@ public class StartService
                     "Admin", "User"
                 })
         );
-        AnsiConsole.MarkupLine("your choice: " + role);
+
+        if (role == "Admin")
+        {
+            var password = AnsiConsole.Prompt(
+                new TextPrompt<string>("Enter password: ")
+                    .Secret());
+            if (!_adminService.LoginAdmin(password))
+            {
+                // throw exception;
+            }
+        }
+        else
+        {
+        }
     }
 }

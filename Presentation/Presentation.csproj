@@ -11,4 +11,9 @@
       <PackageReference Include="Spectre.Console" Version="0.48.1-preview.0.5" />
     </ItemGroup>
 
+
+    <ItemGroup>
+      <ProjectReference Include="..\Application\Application.csproj" />
+    </ItemGroup>
+
 </Project>
