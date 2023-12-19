@@ -9,7 +9,7 @@ public class AdminService: IAdminService
         _password = password;
     }
 
-    public bool LoginAdmin(string password)
+    public Task<bool> LoginAdmin(string password)
     {
         return _password == password;
     }

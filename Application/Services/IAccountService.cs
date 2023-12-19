@@ -4,6 +4,6 @@ namespace Application.Services;
 
 public interface IAccountService
 {
-    Account GetAccountByNumber(string number, string pin);
-    void ChangeBalance(long accountId, decimal amount);
+    Task<Account> GetAccountByNumber(string number, string pin);
+    Task ChangeBalance(long accountId, decimal amount);
 }

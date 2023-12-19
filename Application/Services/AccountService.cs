@@ -15,7 +15,7 @@ public class AccountService : IAccountService
         _historyService = historyService;
     }
 
-    public Account GetAccountByNumber(string number, string pin)
+    public Task<Account> GetAccountByNumber(string number, string pin)
     {
         Account? account = _accountRepository.GetAccountByNumber(number);
         if (account == null) throw new NotFoundException();
@@ -23,7 +23,7 @@ public class AccountService : IAccountService
         return account;
     }
 
-    public void ChangeBalance(long accountId, decimal amount)
+    public Task ChangeBalance(long accountId, decimal amount)
     {
         Account? account = _accountRepository.GetById(accountId);
         if (account == null) throw new NotFoundException();

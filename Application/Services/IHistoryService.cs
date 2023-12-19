@@ -4,5 +4,5 @@ namespace Application.Services;
 
 public interface IHistoryService
 {
-    IEnumerable<History> GetHistoryByAccountId(long accountId);
+    Task<IEnumerable<History>> GetHistoryByAccountId(long accountId);
 }

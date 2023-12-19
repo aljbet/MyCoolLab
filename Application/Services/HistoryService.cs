@@ -12,7 +12,7 @@ public class HistoryService : IHistoryService
         _historyRepository = historyRepository;
     }
 
-    public IEnumerable<History> GetHistoryByAccountId(long accountId)
+    public Task<IEnumerable<History>> GetHistoryByAccountId(long accountId)
     {
         return _historyRepository.GetHistoryByAccountId(accountId);
     }
