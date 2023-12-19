@@ -4,6 +4,6 @@ namespace Application.Repositories;
 
 public interface IHistoryRepository
 {
-    IEnumerable<History> GetHistoryByAccountId(long accountId);
-    void MakeHistory(long accountId, decimal amount);
+    Task<IEnumerable<History>> GetHistoryByAccountId(long accountId);
+    Task MakeHistory(long accountId, decimal amount);
 }

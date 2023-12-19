@@ -4,7 +4,7 @@ namespace Application.Repositories;
 
 public interface IAccountRepository
 {
-    Account? GetAccountByNumber(string number);
-    Account? GetById(long id);
-    void ChangeBalance(long accountId, decimal amount);
+    Task<Account?> GetAccountByNumber(string number);
+    Task<Account?> GetById(long id);
+    Task ChangeBalance(long accountId, decimal amount);
 }

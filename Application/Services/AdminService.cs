@@ -11,6 +11,6 @@ public class AdminService: IAdminService
 
     public Task<bool> LoginAdmin(string password)
     {
-        return _password == password;
+        return Task.FromResult(_password == password);
     }
 }

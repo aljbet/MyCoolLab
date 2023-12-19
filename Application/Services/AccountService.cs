@@ -15,20 +15,25 @@ public class AccountService : IAccountService
         _historyService = historyService;
     }
 
-    public Task<Account> GetAccountByNumber(string number, string pin)
+    public async Task<Account> GetAccountByNumber(string number, string pin)
     {
-        Account? account = _accountRepository.GetAccountByNumber(number);
+        Account? account = await _accountRepository.GetAccountByNumber(number);
         if (account == null) throw new NotFoundException();
         if (account.Pin != pin) throw new BadPasswordException();
         return account;
     }
 
-    public Task ChangeBalance(long accountId, decimal amount)
+    public async Task ChangeBalance(long accountId, decimal amount)
     {
-        Account? account = _accountRepository.GetById(accountId);
+        Account? account = await _accountRepository.GetById(accountId);
         if (account == null) throw new NotFoundException();
         if (account.Balance + amount < 0) throw new NotEnoughMoney();
-        _accountRepository.ChangeBalance(accountId, account.Balance + amount);
-        _historyService.MakeHistory(accountId, amount);
+        await _accountRepository.ChangeBalance(accountId, account.Balance + amount);
+        await _historyService.MakeHistory(accountId, amount);
+    }
+
+    public Task CreateAccount(string number, string pin)
+    {
+        throw new NotImplementedException();
     }
 }
