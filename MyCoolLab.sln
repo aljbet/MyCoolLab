@@ -4,6 +4,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyCoolLab", "MyCoolLab\MyCo
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Application", "Application\Application.csproj", "{C17EF531-2577-45C1-B0A6-B8F614ECD027}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Presentation", "Presentation\Presentation.csproj", "{08C63044-7A85-4492-8141-7D928EA29189}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -18,5 +20,9 @@ Global
 		{C17EF531-2577-45C1-B0A6-B8F614ECD027}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C17EF531-2577-45C1-B0A6-B8F614ECD027}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C17EF531-2577-45C1-B0A6-B8F614ECD027}.Release|Any CPU.Build.0 = Release|Any CPU
+		{08C63044-7A85-4492-8141-7D928EA29189}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{08C63044-7A85-4492-8141-7D928EA29189}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{08C63044-7A85-4492-8141-7D928EA29189}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{08C63044-7A85-4492-8141-7D928EA29189}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

@@ -2,7 +2,7 @@ using Application.Models;
 
 namespace Application.Services;
 
-public interface IHisotryService
+public interface IHistoryService
 {
     IEnumerable<History> GetHistoryByAccountId(long accountId);
 }
