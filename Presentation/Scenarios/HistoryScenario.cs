@@ -1,4 +1,5 @@
-﻿using Application.Models;
+﻿using Application.Exceptions;
+using Application.Models;
 using Application.Services;
 using Spectre.Console;
 
@@ -15,8 +16,18 @@ public class HistoryScenario : IHistoryScenario
 
     public string Name => "Show history";
 
-    public async Task Run(Account account)
+    public async Task Run(Context context)
     {
-        await _historyService.GetHistoryByAccountId(account.Id);
+        if (!context.IsAdmin)
+        {
+            if (context.Account is null) throw new NotFoundException();
+            await _historyService.GetHistoryByAccountId(context.Account.Number);
+        }
+        else
+        {
+            var accountNumber = AnsiConsole.Prompt(
+                new TextPrompt<string>("Enter account number: "));
+            await _historyService.GetHistoryByAccountId(accountNumber);
+        }
     }
 }

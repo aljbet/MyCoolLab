@@ -1,4 +1,4 @@
-﻿using Application.Models;
+﻿using Application.Exceptions;
 using Spectre.Console;
 
 namespace Presentation.Scenarios;
@@ -6,9 +6,10 @@ namespace Presentation.Scenarios;
 public class ShowBalanceScenario : IShowBalanceScenario
 { 
     public string Name => "Show balance";
-    public Task Run(Account account)
+    public Task Run(Context context)
     {
-        AnsiConsole.MarkupLine($"Your balance is {account.Balance}.");
+        if (context.Account is null) throw new NotFoundException();
+        AnsiConsole.MarkupLine($"Your balance is {context.Account.Balance}.");
         return Task.CompletedTask;
     }
 }

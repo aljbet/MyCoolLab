@@ -13,7 +13,7 @@ public class CreateAccountScenario : ICreateAccountScenario
         _accountRepository = accountRepository ?? throw new ArgumentNullException(nameof(accountRepository));
     }
     public string Name => "Create account";
-    public async Task Run(Account account)
+    public async Task Run(Context context)
     {
         var accountNumber = AnsiConsole.Prompt(
             new TextPrompt<string>("Enter account number: "));

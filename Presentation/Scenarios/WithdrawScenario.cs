@@ -1,4 +1,5 @@
-﻿using Application.Models;
+﻿using Application.Exceptions;
+using Application.Models;
 using Application.Services;
 using Spectre.Console;
 
@@ -15,10 +16,11 @@ public class WithdrawScenario : IWithdrawScenario
 
     public string Name => "Withdraw money";
 
-    public async Task Run(Account account)
+    public async Task Run(Context context)
     {
+        if (context.Account is null) throw new NotFoundException();
         var money = AnsiConsole.Prompt(
             new TextPrompt<int>("Enter amount of money: "));
-        await _accountService.ChangeBalance(account.Id, -money);
+        await _accountService.ChangeBalance(context.Account.Id, -money);
     }
 }

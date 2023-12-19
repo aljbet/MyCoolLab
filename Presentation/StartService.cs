@@ -3,7 +3,7 @@ using Application.Services;
 using Presentation.Scenarios;
 using Spectre.Console;
 
-namespace Presentation.Services;
+namespace Presentation;
 
 public class StartService
 {
@@ -50,12 +50,13 @@ public class StartService
                 new TextPrompt<string>("Enter password: ")
                     .Secret());
             if (!await _adminService.LoginAdmin(password)) throw new BadPasswordException("Wrong system password.");
-            var adminAction = AnsiConsole.Prompt(
+            var scenario = AnsiConsole.Prompt(
                 new SelectionPrompt<IScenario>()
                     .Title("Choose action: ")
                     .AddChoices(_adminActions)
                     .UseConverter(x => x.Name)
             );
+            await scenario.Run(new Context());
         }
         else
         {
@@ -71,7 +72,7 @@ public class StartService
                     .AddChoices(_userActions)
                     .UseConverter(x => x.Name)
             );
-            await scenario.Run(account);
+            await scenario.Run(new Context(account));
         }
     }
 }
