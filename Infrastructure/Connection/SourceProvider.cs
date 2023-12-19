@@ -1,5 +1,5 @@
 using Npgsql;
-
+#pragma warning disable CA2007
 namespace Infrastructure.Connection;
 
 public class SourceProvider : ISourceProvider

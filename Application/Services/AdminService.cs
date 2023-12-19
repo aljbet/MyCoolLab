@@ -1,5 +1,5 @@
 namespace Application.Services;
-
+#pragma warning disable CA2007
 public class AdminService: IAdminService
 {
     private string _password;

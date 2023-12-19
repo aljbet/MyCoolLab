@@ -1,6 +1,6 @@
 using Application.Models;
 using Application.Repositories;
-
+#pragma warning disable CA2007
 namespace Application.Services;
 
 public class HistoryService : IHistoryService
