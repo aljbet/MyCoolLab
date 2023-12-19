@@ -1,12 +1,25 @@
 ﻿using Application.Models;
+using Application.Repositories;
+using Spectre.Console;
 
 namespace Presentation.Scenarios;
 
 public class CreateAccountScenario : ICreateAccountScenario
 {
-    public string Name => "Create account";
-    public Task Run(Account account)
+    private readonly IAccountRepository _accountRepository;
+
+    public CreateAccountScenario(IAccountRepository accountRepository)
     {
-        throw new NotImplementedException();
+        _accountRepository = accountRepository ?? throw new ArgumentNullException(nameof(accountRepository));
+    }
+    public string Name => "Create account";
+    public async Task Run(Account account)
+    {
+        var accountNumber = AnsiConsole.Prompt(
+            new TextPrompt<string>("Enter account number: "));
+        var pin = AnsiConsole.Prompt(
+            new TextPrompt<string>("Enter pin code: ")
+                .Secret());
+        await _accountRepository.CreateAccount(accountNumber, pin);
     }
 }
