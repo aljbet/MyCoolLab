@@ -21,13 +21,13 @@ public class HistoryScenario : IHistoryScenario
         if (!context.IsAdmin)
         {
             if (context.Account is null) throw new NotFoundException();
-            await _historyService.GetHistoryByAccountId(context.Account.Number);
+            await _historyService.GetHistoryByAccountNumber(context.Account.Number);
         }
         else
         {
             var accountNumber = AnsiConsole.Prompt(
                 new TextPrompt<string>("Enter account number: "));
-            await _historyService.GetHistoryByAccountId(accountNumber);
+            await _historyService.GetHistoryByAccountNumber(accountNumber);
         }
     }
 }

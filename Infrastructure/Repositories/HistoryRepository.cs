@@ -14,12 +14,12 @@ public class HistoryRepository : IHistoryRepository
         _sourceProvider = sourceProvider;
     }
 
-    public async Task<IEnumerable<History>> GetHistoryByAccountId(long accountId)
+    public async Task<IEnumerable<History>> GetHistoryByAccountNumber(string number)
     {
         await using var command = new NpgsqlCommand(
-            "SELECT * FROM history WHERE account_id = $1",
+            "SELECT * FROM history WHERE (SELECT account_id FROM accounts WHERE number = $1) = account_id",
             await _sourceProvider.DataSource.OpenConnectionAsync());
-        command.Parameters.AddWithValue(accountId);
+        command.Parameters.AddWithValue(number);
         await using NpgsqlDataReader reader = await command.ExecuteReaderAsync();
         List<History> history = new();
         while (await reader.ReadAsync())

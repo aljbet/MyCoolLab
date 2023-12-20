@@ -12,8 +12,8 @@ public class HistoryService : IHistoryService
         _historyRepository = historyRepository;
     }
 
-    public Task<IEnumerable<History>> GetHistoryByAccountId(long accountId)
+    public Task<IEnumerable<History>> GetHistoryByAccountNumber(string number)
     {
-        return _historyRepository.GetHistoryByAccountId(accountId);
+        return _historyRepository.GetHistoryByAccountNumber(number);
     }
 }

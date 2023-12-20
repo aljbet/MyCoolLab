@@ -4,9 +4,9 @@ namespace Infrastructure.Connection;
 
 public class SourceProvider : ISourceProvider
 {
-    public SourceProvider(NpgsqlDataSource dataSource)
+    public SourceProvider(string connectionString)
     {
-        DataSource = dataSource;
+        DataSource = NpgsqlDataSource.Create(connectionString);
     }
 
     public NpgsqlDataSource DataSource { get; }

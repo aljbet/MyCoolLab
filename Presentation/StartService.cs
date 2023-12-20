@@ -5,7 +5,7 @@ using Spectre.Console;
 
 namespace Presentation;
 
-public class StartService
+public class StartService : IStartService
 {
     private readonly IAdminService _adminService;
     private readonly IAccountService _accountService;
@@ -33,7 +33,7 @@ public class StartService
         _adminActions.Add(showHistoryScenario);
     }
 
-    public async void Start()
+    public async Task Start()
     {
         var role = AnsiConsole.Prompt(
             new SelectionPrompt<string>()
